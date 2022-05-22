@@ -1,0 +1,57 @@
+---
+output:
+  word_document:
+    reference_docx: style/letter_1.docx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(tibble)
+library(knitr)
+library(lubridate)
+library(flextable)
+```
+
+:::{custom-style="thedate"}
+`r format(Sys.Date(), "%A %d %B %Y")`
+:::
+  
+`r paste(number$Licence.holder)`  
+
+`r paste(str_replace_all(number$Licence.holder.address, ", ", "\n  \n  "))`
+\
+\
+**Dear `r paste(strsplit(number$Licence.holder, " ")[[1]][1], strsplit(number$Licence.holder, " ")[[1]][length(strsplit(number$Licence.holder, " ")[[1]])])`,** 
+\
+\
+I am writing to express my interest in making an offer on your HMO property at `r if (str_contains(str_split(number$Address.of.HMO, ", ")[[1]][1], c("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"), logic = "or")) {paste0(str_split(number$Address.of.HMO, ", ")[[1]][1])} else {paste0((str_split(number$Address.of.HMO, ", ")[[1]][2]))}` in Durham.
+\
+\
+I am currently in the process of selling my old place in London. I thought I could do something nice for my son, Peter, by buying a place in Durham, not just as an investment, but for him and his friends to live in while he completes his studies at the University.
+\
+\
+We looked on the market and couldn't find anything suitable. This led us to looking on the Council's public register of HMOs where we found your property listed. We would rather speak to you directly than go through an agent as we believe it would allow us to fully convey our reasoning.
+\
+\
+As investment income is not my only concern I am willing to accommodate to your expectations regarding valuation.
+\
+\
+If this is something you would like to consider please do not hesitate to get in touch. We are available over the phone, by email, or in person in Durham at your discretion.
+\
+\
+**Yours sincerely,**
+\
+![](images/JohnHancock.png)
+\
+**John Hancock**
+\
+xxxxx xxxx
+\
+xxx xxx xxx
+\
+John@Hancock.com
+\
+020 89403011
+\
+\
